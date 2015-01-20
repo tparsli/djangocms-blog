@@ -30,6 +30,8 @@ class BlogLatestEntriesPlugin(BlogPlugin):
     cache = False
 
     def render(self, context, instance, placeholder):
+        if instance and instance.template:
+            self.render_template = self.TEMPLATE_NAME % instance.template
         context['instance'] = instance
         context['posts_list'] = instance.get_posts(context['request'])
         context['TRUNCWORDS_COUNT'] = get_setting('POSTS_LIST_TRUNCWORDS_COUNT')
