@@ -19,7 +19,10 @@ class BlogLatestEntriesPlugin(BlogPlugin):
     Non cached plugin which returns the latest posts taking into account the
       user / toolbar state
     """
-    render_template = 'djangocms_blog/plugins/latest_entries.html'
+    #render_template = 'djangocms_blog/plugins/latest_entries.html'
+    TEMPLATE_NAME = 'djangocms_blog/plugins/%s.html'
+    render_template = TEMPLATE_NAME % 'latest_entries'
+
     name = _('Latest Blog Articles')
     model = LatestPostsPlugin
     form = LatestEntriesForm

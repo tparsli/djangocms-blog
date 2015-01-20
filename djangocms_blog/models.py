@@ -246,6 +246,10 @@ class LatestPostsPlugin(BasePostPlugin):
                                   help_text=_('Show only the blog articles tagged with chosen tags.'))
     categories = models.ManyToManyField('BlogCategory', blank=True,
                                         help_text=_('Show only the blog articles tagged with chosen categories.'))
+    template = models.CharField('Template', max_length=255,
+                                choices =  dj_settings.BLOG_PLUGIN_TEMPLATES)
+    show_images = models.BooleanField(_('Show Images'), default=True)
+
 
     def __str__(self):
         return u'%s latest articles by tag' % self.latest_posts
